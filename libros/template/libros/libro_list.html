@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+
+    <div class="container">
+        <h1 class="my-2">Lista de libros</h1>
+        <hr/>
+
+    <a class=" my-2 btn btn-outline-primary" href="{% url 'nuevo_libro' %}">Nuevo Libro</a>
+
+    <div>
+        <form method="get">
+            <input type="text" name="buscar-libro"/>
+            <input type="submit" name="buscar"/>
+        </form>
+    </div>
+
+    <table class="table  table-sm my-3">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for libro in libros %}
+            <tr>
+                <td>{{libro.titulo}}</td>
+                <td>{{libro.autor}}</td>
+                <td><a class="btn btn-outline-success" href="{% url 'detalle' libro.id  %}">Ver Detalle</a></td>
+                <td><a class="btn btn-outline-warning" href="{% url 'editar' libro.id %}">Editar</a></td>
+                <td><a class="btn btn-outline-danger" href="{% url 'eliminar' libro.id %}" >Eliminar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+    </div>
+
+
+{% endblock %}

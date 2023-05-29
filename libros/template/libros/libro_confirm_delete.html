@@ -1,0 +1,13 @@
+<h1>Pantalla de Confirmación</h1>
+
+<a href="{% url 'index' %}">Regresar</a>
+
+<form method="post" action="">
+  <h3>¿Esta seguro de querer eliminar el libro {{object.titulo}}?</h3>
+
+  {% csrf_token %}
+
+  {{form}}
+
+  <button type="submit" >Confirmar</button>
+</form>
